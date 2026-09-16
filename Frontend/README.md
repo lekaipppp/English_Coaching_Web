@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Crosswire — Marketing Site
 
-## Getting Started
+Marketing website for Crosswire, a communication training business for
+international tech professionals and the outsourcing firms / Western
+companies around them. Built with Next.js (App Router), statically
+generated (SSG) throughout — no backend, no database, no auth.
 
-First, run the development server:
+## Stack
+
+- Next.js 16 (App Router, static rendering by default — no page here uses
+  a dynamic API, so `next build` prerenders every route to HTML)
+- React 19 + Tailwind CSS v4 (design tokens live in `src/app/globals.css`)
+- Fonts loaded via `next/font/google`: Fraunces (headlines), Work Sans (body)
+
+## Getting started
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build   # production build — verify every route is still "○ Static"
+npm run start   # serve the production build locally
+npm run lint
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Project structure
 
-## Learn More
+```
+src/
+  app/            one folder per route (page.tsx + optional metadata)
+  components/     Header, Footer, shared UI (Container, VoiceBars)
+  data/           placeholder content (resources grid)
+  lib/            constants (site URL, contact email, Calendly links)
+```
 
-To learn more about Next.js, take a look at the following resources:
+The corporate-page tabs and the resources-page category filter are built
+with a pure-CSS checkbox/radio + `peer` pattern (no client JS, no
+`"use client"`), so all tab/filter content ships in the initial HTML for
+crawlers and works with JS disabled. Same for the mobile nav menu.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Before launching
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+A few placeholders need real values — search for them in `src/lib/constants.ts`:
 
-## Deploy on Vercel
+- `SITE_URL` — currently a placeholder domain, used for the sitemap,
+  robots.txt, and Open Graph URLs
+- `CALENDLY_PROFESSIONALS_URL`, `CALENDLY_OUTSOURCING_URL`, `CALENDLY_WESTERN_URL`
+  — placeholder Calendly links
+- `CONTACT_EMAIL` — footer contact placeholder
+- Pricing figures in `src/app/pricing/page.tsx` are placeholders
+- `/login` is a non-functional UI placeholder (no auth wired up)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deploying to Vercel
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Push to a Git repo and import it in Vercel, or run:
+
+```bash
+npx vercel
+```
+
+No environment variables are required for the site to build and run.
