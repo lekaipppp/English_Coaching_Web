@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Container from "@/components/Container";
+import Photo from "@/components/Photo";
 import {
   CALENDLY_OUTSOURCING_URL,
   CALENDLY_WESTERN_URL,
@@ -110,24 +111,32 @@ export default function CorporatePage() {
               className="hidden w-full peer-checked/outsourcing:block"
             >
               <div className="pt-12">
-                <p className="text-sm text-amber">Outsourcing &amp; Staffing Firms</p>
-                <h2 className="mt-3 max-w-2xl text-3xl md:text-4xl">
-                  Your clients don&rsquo;t leave over code quality. They
-                  leave over how it feels to work with your team.
-                </h2>
-                <p className="mt-6 max-w-2xl text-lg text-ink-soft">
-                  Cohort-based training for the developers and IT staff you
-                  place with Western clients, so contracts renew on
-                  communication as well as delivery.
-                </p>
-                <a
-                  href={CALENDLY_OUTSOURCING_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-8 inline-block border-b-2 border-amber pb-1 font-medium text-ink"
-                >
-                  Book a call
-                </a>
+                <div className="grid gap-10 md:grid-cols-[3fr_2fr] md:items-center">
+                  <div>
+                    <p className="text-sm text-amber">Outsourcing &amp; Staffing Firms</p>
+                    <h2 className="mt-3 max-w-2xl text-3xl md:text-4xl">
+                      Your clients don&rsquo;t leave over code quality. They
+                      leave over how it feels to work with your team.
+                    </h2>
+                    <p className="mt-6 max-w-2xl text-lg text-ink-soft">
+                      Cohort-based training for the developers and IT staff you
+                      place with Western clients, so contracts renew on
+                      communication as well as delivery.
+                    </p>
+                    <a
+                      href={CALENDLY_OUTSOURCING_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-8 inline-block border-b-2 border-amber pb-1 font-medium text-ink"
+                    >
+                      Book a call
+                    </a>
+                  </div>
+                  <Photo
+                    src="/images/corporate/fiqih-alfarish-dz2ApK93Idc-unsplash.jpg"
+                    alt="A team presenting project results in a meeting room, city skyline behind them"
+                  />
+                </div>
 
                 <div className="mt-12 divide-y divide-line border-t border-line">
                   {OUTSOURCING_FEATURES.map((feature) => (
@@ -149,24 +158,32 @@ export default function CorporatePage() {
               className="hidden w-full peer-checked/western:block"
             >
               <div className="pt-12">
-                <p className="text-sm text-teal">Western Companies</p>
-                <h2 className="mt-3 max-w-2xl text-3xl md:text-4xl">
-                  The skill is there. The hesitation in meetings is what
-                  you&rsquo;re actually losing.
-                </h2>
-                <p className="mt-6 max-w-2xl text-lg text-ink-soft">
-                  Training for teams directly managing international
-                  developers and IT staff — built around how your team
-                  actually communicates, not a generic workshop.
-                </p>
-                <a
-                  href={CALENDLY_WESTERN_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-8 inline-block border-b-2 border-teal pb-1 font-medium text-ink"
-                >
-                  Book a call
-                </a>
+                <div className="grid gap-10 md:grid-cols-[3fr_2fr] md:items-center">
+                  <div>
+                    <p className="text-sm text-teal">Western Companies</p>
+                    <h2 className="mt-3 max-w-2xl text-3xl md:text-4xl">
+                      The skill is there. The hesitation in meetings is what
+                      you&rsquo;re actually losing.
+                    </h2>
+                    <p className="mt-6 max-w-2xl text-lg text-ink-soft">
+                      Training for teams directly managing international
+                      developers and IT staff — built around how your team
+                      actually communicates, not a generic workshop.
+                    </p>
+                    <a
+                      href={CALENDLY_WESTERN_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-8 inline-block border-b-2 border-teal pb-1 font-medium text-ink"
+                    >
+                      Book a call
+                    </a>
+                  </div>
+                  <Photo
+                    src="/images/corporate/pexels-a-darmel-7710147.jpg"
+                    alt="A diverse team discussing results together around a whiteboard"
+                  />
+                </div>
 
                 <div className="mt-12 divide-y divide-line border-t border-line">
                   {WESTERN_FEATURES.map((feature) => (

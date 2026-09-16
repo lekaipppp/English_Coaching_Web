@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Container from "@/components/Container";
+import Photo from "@/components/Photo";
 import VoiceBars from "@/components/VoiceBars";
 import { SITE_DESCRIPTION } from "@/lib/constants";
 
@@ -26,22 +27,30 @@ export default function HomePage() {
               deadlines, and run client calls with confidence, so good work
               stops getting lost in translation.
             </p>
-            <div className="mt-8 flex flex-wrap gap-6">
+            <div className="mt-8 flex flex-wrap gap-4">
               <Link
                 href="/professionals"
-                className="border-b-2 border-coral pb-1 font-medium text-ink"
+                className="rounded-md bg-coral px-6 py-3 font-medium text-paper transition-opacity hover:opacity-90"
               >
                 For Professionals
               </Link>
               <Link
                 href="/corporate"
-                className="border-b-2 border-teal pb-1 font-medium text-ink"
+                className="rounded-md bg-teal px-6 py-3 font-medium text-paper transition-opacity hover:opacity-90"
               >
                 For Corporate
               </Link>
             </div>
           </div>
-          <VoiceBars className="h-28 w-full md:h-40" />
+          <div
+            className="rounded-2xl border border-line p-10 md:p-14"
+            style={{
+              background:
+                "radial-gradient(circle at 25% 20%, rgba(214,138,44,0.08), transparent 60%), radial-gradient(circle at 80% 85%, rgba(44,110,104,0.1), transparent 55%), var(--paper-raised)",
+            }}
+          >
+            <VoiceBars className="h-28 w-full md:h-40" />
+          </div>
         </Container>
       </section>
 
@@ -49,7 +58,7 @@ export default function HomePage() {
         <Container>
           <h2 className="text-2xl md:text-3xl">Three ways we help</h2>
 
-          <div className="mt-10 border-t border-line pt-10">
+          <div className="mt-10 grid gap-8 border-t border-line pt-10 md:grid-cols-[3fr_2fr] md:items-center">
             <div className="grid gap-3 md:grid-cols-[1fr_2fr] md:items-baseline">
               <p className="text-sm text-muted">Individuals</p>
               <div className="border-l-2 border-coral pl-6">
@@ -69,6 +78,10 @@ export default function HomePage() {
                 </Link>
               </div>
             </div>
+            <Photo
+              src="/images/main/mimi-thian-vdXMSiX-n6M-unsplash.jpg"
+              alt="A diverse team gathered around a laptop, discussing work together"
+            />
           </div>
 
           <div className="mt-10 grid gap-10 border-t border-line pt-10 md:grid-cols-2">

@@ -12,7 +12,10 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-paper/95 backdrop-blur">
       <div className="relative mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <Link href="/" className="font-headline text-xl text-ink">
+        <Link
+          href="/"
+          className="font-headline text-2xl font-semibold tracking-tight text-ink md:text-3xl"
+        >
           Crosswire
         </Link>
 
@@ -43,7 +46,7 @@ export default function Header() {
           ))}
           <Link
             href="/login"
-            className="border-b border-transparent py-2 text-sm text-muted transition-colors hover:border-ink-soft hover:text-ink-soft md:py-0"
+            className="self-start rounded-md border border-ink-soft/50 px-4 py-1.5 text-sm font-medium text-ink-soft transition-colors hover:border-ink hover:text-ink md:self-center"
           >
             Log in
           </Link>

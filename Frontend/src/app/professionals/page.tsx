@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Container from "@/components/Container";
+import Photo from "@/components/Photo";
 import { CALENDLY_PROFESSIONALS_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
@@ -33,31 +34,45 @@ export default function ProfessionalsPage() {
   return (
     <>
       <section className="border-b border-line py-20 md:py-28">
-        <Container>
-          <p className="text-sm text-coral">For Professionals</p>
-          <h1 className="mt-3 max-w-3xl text-4xl leading-[1.1] md:text-6xl">
-            You know the answer. Say it like you do.
-          </h1>
-          <p className="mt-6 max-w-2xl text-lg text-ink-soft">
-            1:1 coaching for developers and IT professionals working in
-            Western companies. We work on speaking up in meetings, prepping
-            for interviews, and handling client calls — so the way you say
-            something stops undercutting what you actually know.
-          </p>
-          <a
-            href={CALENDLY_PROFESSIONALS_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-8 inline-block border-b-2 border-coral pb-1 font-medium text-ink"
-          >
-            Book a session
-          </a>
+        <Container className="grid items-center gap-12 md:grid-cols-[3fr_2fr]">
+          <div>
+            <p className="text-sm text-coral">For Professionals</p>
+            <h1 className="mt-3 max-w-3xl text-4xl leading-[1.1] md:text-6xl">
+              You know the answer. Say it like you do.
+            </h1>
+            <p className="mt-6 max-w-2xl text-lg text-ink-soft">
+              1:1 coaching for developers and IT professionals working in
+              Western companies. We work on speaking up in meetings, prepping
+              for interviews, and handling client calls — so the way you say
+              something stops undercutting what you actually know.
+            </p>
+            <a
+              href={CALENDLY_PROFESSIONALS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-8 inline-block border-b-2 border-coral pb-1 font-medium text-ink"
+            >
+              Book a session
+            </a>
+          </div>
+          <Photo
+            src="/images/professionals/litoon-dev-9BqxbLUS3qM-unsplash.jpg"
+            alt="A developer smiling confidently at his desk"
+            priority
+          />
         </Container>
       </section>
 
       <section className="py-16">
         <Container>
-          <h2 className="text-2xl md:text-3xl">How it works</h2>
+          <div className="grid gap-8 md:grid-cols-[3fr_2fr] md:items-center">
+            <h2 className="text-2xl md:text-3xl">How it works</h2>
+            <Photo
+              src="/images/professionals/pexels-silverkblack-36766677.jpg"
+              alt="A professional confidently taking a call at his desk"
+              aspect="aspect-[16/10]"
+            />
+          </div>
           <div className="mt-8 divide-y divide-line border-t border-line">
             {FEATURES.map((feature) => (
               <div
