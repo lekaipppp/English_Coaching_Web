@@ -1,22 +1,68 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import type { FormEvent } from "react";
 import AuthCard from "@/components/auth/AuthCard";
 import OAuthOptions from "@/components/auth/OAuthOptions";
+import { createClient } from "@/utils/supabase/client";
 
 export default function RegisterForm() {
-  function handleGoogleSignIn() {
-    // TODO: connect Supabase Auth here
+  const router = useRouter();
+
+  async function handleGoogleSignIn() {
+    const supabase = createClient();
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: {
+        redirectTo: `${window.location.origin}/auth/callback`,
+      },
+    });
+
+    if (error) {
+      console.error(error);
+    }
   }
 
-  function handleFacebookSignIn() {
-    // TODO: connect Supabase Auth here
+  async function handleFacebookSignIn() {
+    const supabase = createClient();
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: "facebook",
+      options: {
+        redirectTo: `${window.location.origin}/auth/callback`,
+      },
+    });
+
+    if (error) {
+      console.error(error);
+    }
   }
 
-  function handleRegister(event: FormEvent<HTMLFormElement>) {
+  async function handleRegister(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    // TODO: connect Supabase Auth here
+
+    const formData = new FormData(event.currentTarget);
+    const email = formData.get("email") as string;
+    const password = formData.get("password") as string;
+    const confirmPassword = formData.get("confirmPassword") as string;
+
+    if (password !== confirmPassword) {
+      console.error("Passwords do not match");
+      return;
+    }
+
+    const supabase = createClient();
+    const { error } = await supabase.auth.signUp({
+      email,
+      password,
+    });
+
+    if (error) {
+      console.error(error);
+      return;
+    }
+
+    router.push("/account");
   }
 
   return (
