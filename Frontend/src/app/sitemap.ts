@@ -6,7 +6,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "", changeFrequency: "monthly" as const, priority: 1 },
     { path: "/professionals", changeFrequency: "monthly" as const, priority: 0.9 },
     { path: "/corporate", changeFrequency: "monthly" as const, priority: 0.9 },
-    { path: "/resources", changeFrequency: "weekly" as const, priority: 0.7 },
+    { path: "/resources/blog", changeFrequency: "weekly" as const, priority: 0.7 },
+    { path: "/resources/podcast", changeFrequency: "weekly" as const, priority: 0.7 },
+    { path: "/resources/learning-materials", changeFrequency: "weekly" as const, priority: 0.7 },
     { path: "/pricing", changeFrequency: "monthly" as const, priority: 0.6 },
   ];
 

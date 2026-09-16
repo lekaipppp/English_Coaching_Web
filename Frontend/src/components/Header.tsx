@@ -1,12 +1,13 @@
 import Link from "next/link";
+import ResourcesNav from "@/components/ResourcesNav";
 
-const NAV_LINKS = [
+const PRIMARY_LINKS = [
   { href: "/", label: "Home" },
   { href: "/professionals", label: "For Professionals" },
   { href: "/corporate", label: "For Corporate" },
-  { href: "/resources", label: "Resources" },
-  { href: "/pricing", label: "Pricing" },
 ];
+
+const TRAILING_LINKS = [{ href: "/pricing", label: "Pricing" }];
 
 export default function Header() {
   return (
@@ -35,7 +36,17 @@ export default function Header() {
           aria-label="Primary"
           className="absolute top-full left-0 hidden w-full flex-col gap-1 border-b border-line bg-paper px-6 py-4 peer-checked:flex md:static md:flex md:w-auto md:flex-row md:items-center md:gap-8 md:border-0 md:bg-transparent md:p-0"
         >
-          {NAV_LINKS.map((link) => (
+          {PRIMARY_LINKS.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="py-2 text-ink-soft transition-colors hover:text-ink md:py-0"
+            >
+              {link.label}
+            </Link>
+          ))}
+          <ResourcesNav />
+          {TRAILING_LINKS.map((link) => (
             <Link
               key={link.href}
               href={link.href}
