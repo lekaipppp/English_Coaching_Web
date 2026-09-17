@@ -1,5 +1,8 @@
+import { cookies } from "next/headers";
 import Link from "next/link";
 import ResourcesNav from "@/components/ResourcesNav";
+import UserMenu from "@/components/auth/UserMenu";
+import { createClient } from "@/utils/supabase/server";
 
 const PRIMARY_LINKS = [
   { href: "/", label: "Home" },
@@ -9,7 +12,13 @@ const PRIMARY_LINKS = [
 
 const TRAILING_LINKS = [{ href: "/pricing", label: "Pricing" }];
 
-export default function Header() {
+export default async function Header() {
+  const cookieStore = await cookies();
+  const supabase = createClient(cookieStore);
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-paper/95 backdrop-blur">
       <div className="relative mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
@@ -55,12 +64,16 @@ export default function Header() {
               {link.label}
             </Link>
           ))}
-          <Link
-            href="/login"
-            className="self-start rounded-md border border-ink-soft/50 px-4 py-1.5 text-sm font-medium text-ink-soft transition-colors hover:border-ink hover:text-ink md:self-center"
-          >
-            Log in
-          </Link>
+          {user ? (
+            <UserMenu avatarUrl={user.user_metadata?.avatar_url ?? null} />
+          ) : (
+            <Link
+              href="/login"
+              className="self-start rounded-md border border-ink-soft/50 px-4 py-1.5 text-sm font-medium text-ink-soft transition-colors hover:border-ink hover:text-ink md:self-center"
+            >
+              Log in
+            </Link>
+          )}
         </nav>
       </div>
     </header>

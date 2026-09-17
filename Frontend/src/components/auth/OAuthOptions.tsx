@@ -23,23 +23,10 @@ function GoogleIcon() {
   );
 }
 
-function FacebookIcon() {
-  return (
-    <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
-      <path
-        fill="#1877F2"
-        d="M18 9a9 9 0 1 0-10.41 8.89v-6.29H5.31V9h2.28V7.02c0-2.25 1.34-3.49 3.39-3.49.98 0 2.01.18 2.01.18v2.21h-1.13c-1.11 0-1.46.69-1.46 1.4V9h2.49l-.4 2.6h-2.09v6.29A9 9 0 0 0 18 9Z"
-      />
-    </svg>
-  );
-}
-
 export default function OAuthOptions({
   onGoogle,
-  onFacebook,
 }: {
   onGoogle: () => void;
-  onFacebook: () => void;
 }) {
   return (
     <div>
@@ -51,14 +38,6 @@ export default function OAuthOptions({
         >
           <GoogleIcon />
           Continue with Google
-        </button>
-        <button
-          type="button"
-          onClick={onFacebook}
-          className="flex w-full items-center justify-center gap-3 border border-line bg-paper-raised px-4 py-2.5 text-sm font-medium text-ink transition-colors hover:border-ink-soft hover:bg-paper"
-        >
-          <FacebookIcon />
-          Continue with Facebook
         </button>
       </div>
 

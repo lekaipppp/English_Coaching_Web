@@ -24,20 +24,6 @@ export default function RegisterForm() {
     }
   }
 
-  async function handleFacebookSignIn() {
-    const supabase = createClient();
-    const { error } = await supabase.auth.signInWithOAuth({
-      provider: "facebook",
-      options: {
-        redirectTo: `${window.location.origin}/auth/callback`,
-      },
-    });
-
-    if (error) {
-      console.error(error);
-    }
-  }
-
   async function handleRegister(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
@@ -62,21 +48,15 @@ export default function RegisterForm() {
       return;
     }
 
-    router.push("/account");
+    router.push("/");
   }
 
   return (
     <AuthCard>
       <h1 className="text-2xl">Create your account</h1>
-      <p className="mt-2 text-sm text-muted">
-        Account access is coming soon. This form is a placeholder.
-      </p>
 
       <div className="mt-8">
-        <OAuthOptions
-          onGoogle={handleGoogleSignIn}
-          onFacebook={handleFacebookSignIn}
-        />
+        <OAuthOptions onGoogle={handleGoogleSignIn} />
       </div>
 
       <form onSubmit={handleRegister} className="flex flex-col gap-5">
