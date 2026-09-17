@@ -10,6 +10,39 @@ export const metadata: Metadata = {
   description: SITE_DESCRIPTION,
 };
 
+const HOW_IT_WORKS_STEPS = [
+  {
+    number: "1",
+    title: "Book a session",
+    description:
+      "Pick a time that works for you and confirm your booking — payment is handled securely at checkout, no separate steps.",
+    accent: "border-amber",
+    text: "text-amber",
+    image: null,
+    imageAlt: "",
+  },
+  {
+    number: "2",
+    title: "Get your session details",
+    description:
+      "You'll get a confirmation with a video call link sent straight to your inbox — nothing else to set up.",
+    accent: "border-teal",
+    text: "text-teal",
+    image: "/images/main/muhammad-faiz-zulkeflee-alw-CwGFmwQ-unsplash.jpg",
+    imageAlt: "Two colleagues reviewing something together on a phone",
+  },
+  {
+    number: "3",
+    title: "Show up and work on it live",
+    description:
+      "Bring the meeting, interview, or client call you're preparing for. We work on it together, in real time.",
+    accent: "border-coral",
+    text: "text-coral",
+    image: "/images/professionals/vitaly-gariev--R_uoeuJj6k-unsplash.jpg",
+    imageAlt: "A professional engaged in a live video call at his desk",
+  },
+];
+
 export default function HomePage() {
   return (
     <>
@@ -20,9 +53,10 @@ export default function HomePage() {
               Say it directly, so it lands.
             </h1>
             <p className="mt-6 max-w-xl text-lg text-ink-soft">
-              Crosswire is communication coaching for international tech
-              professionals working with Western clients and colleagues —
-              and for the outsourcing firms and companies around them. We
+              Crosswire is communication coaching for tech professionals
+              from Vietnam, China, Japan, and Korea working with Western
+              clients and colleagues — and for the outsourcing firms and
+              companies around them. We
               help people speak up in meetings, push back on unrealistic
               deadlines, and run client calls with confidence, so good work
               stops getting lost in translation.
@@ -123,6 +157,33 @@ export default function HomePage() {
         </Container>
       </section>
 
+      <section className="border-t border-line py-20">
+        <Container>
+          <h2 className="text-2xl md:text-3xl">How it works</h2>
+          <div className="mt-10 grid gap-10 border-t border-line pt-10 md:grid-cols-3">
+            {HOW_IT_WORKS_STEPS.map((step) => (
+              <div key={step.number} className={`border-l-2 pl-6 ${step.accent}`}>
+                <span
+                  className={`flex h-8 w-8 items-center justify-center rounded-full border ${step.accent} ${step.text} text-sm font-medium`}
+                >
+                  {step.number}
+                </span>
+                <h3 className="mt-4 text-xl">{step.title}</h3>
+                <p className="mt-2 text-ink-soft">{step.description}</p>
+                {step.image && (
+                  <Photo
+                    src={step.image}
+                    alt={step.imageAlt}
+                    aspect="aspect-[4/3]"
+                    className="mt-6"
+                  />
+                )}
+              </div>
+            ))}
+          </div>
+        </Container>
+      </section>
+
       <section className="border-t border-line bg-paper-raised py-16">
         <Container>
           <p className="max-w-2xl text-lg text-ink-soft">
@@ -130,6 +191,12 @@ export default function HomePage() {
             small number of teams and professionals as we refine the
             program.
           </p>
+          <Link
+            href="/corporate"
+            className="mt-3 inline-block text-sm text-teal underline underline-offset-4"
+          >
+            Book a call
+          </Link>
         </Container>
       </section>
     </>

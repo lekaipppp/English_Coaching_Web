@@ -44,7 +44,7 @@ const WESTERN_FEATURES = [
   {
     title: "Measurable before-after tracking",
     description:
-      "We track specific, observable changes in how the team participates in meetings, so the impact isn't just a feeling.",
+      "We track specific, observable changes — meeting participation, frequency of proactive updates, comfort raising concerns — so the impact isn't just a feeling.",
   },
 ];
 

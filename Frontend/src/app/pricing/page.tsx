@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import Container from "@/components/Container";
-import { CALENDLY_PROFESSIONALS_URL } from "@/lib/constants";
+import { CALENDLY_PROFESSIONALS_URL, CONTACT_EMAIL } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Pricing",
@@ -9,22 +8,73 @@ export const metadata: Metadata = {
     "1:1 coaching pricing for professionals, and custom cohort pricing for outsourcing firms and companies.",
 };
 
-const PROFESSIONAL_PLANS = [
+const PRICING_CARDS = [
   {
-    name: "Single session",
-    price: "$120",
-    unit: "per session",
-    description:
-      "A single 1:1 session — a good starting point, or useful before a specific call or interview.",
+    heading: "1:1 Coaching",
+    subheading:
+      "Work on the meetings, interviews, and calls that matter, with a coach who knows your context.",
+    price: "$35",
+    priceUnit: "/ trial lesson",
+    cta: {
+      label: "Book a trial session",
+      href: CALENDLY_PROFESSIONALS_URL,
+      external: true,
+    },
+    features: [
+      "1:1 sessions, not shared with a group",
+      "Interview and high-stakes meeting prep",
+      "Flexible scheduling around your time zone",
+      "Session packages available after your trial",
+    ],
+    whoFor:
+      "For developers and IT professionals preparing for interviews, promotions, or high-stakes client calls.",
+    accent: "border-coral",
+    text: "text-coral",
+    bg: "bg-coral",
   },
   {
-    name: "Package of 6 sessions",
-    price: "$650",
-    unit: "per package",
-    description:
-      "Six sessions over several weeks, for building speaking-up and client-call skills over time.",
+    heading: "Teams & Organizations",
+    subheading:
+      "Cohort-based training for outsourcing firms and Western companies managing international teams.",
+    price: "Custom pricing",
+    priceUnit: null,
+    cta: {
+      label: "Contact us",
+      href: `mailto:${CONTACT_EMAIL}`,
+      external: false,
+    },
+    features: [
+      "2–4 week cohort format",
+      "Real client-call scenario rehearsal",
+      "Diagnosis before training begins",
+      "Volume pricing for larger teams",
+    ],
+    whoFor:
+      "For outsourcing/staffing firms and Western companies managing international developers and IT staff.",
+    accent: "border-teal",
+    text: "text-teal",
+    bg: "bg-teal",
   },
 ];
+
+function CheckIcon({ className = "" }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 20 20"
+      fill="none"
+      className={`h-5 w-5 shrink-0 ${className}`}
+      aria-hidden="true"
+    >
+      <path
+        d="M4.5 10.5 8 14l7.5-7.5"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
 
 export default function PricingPage() {
   return (
@@ -43,53 +93,51 @@ export default function PricingPage() {
 
       <section className="py-16">
         <Container>
-          <p className="text-sm text-coral">For Professionals</p>
-          <h2 className="mt-3 text-2xl md:text-3xl">1:1 coaching</h2>
-
-          <div className="mt-8 divide-y divide-line border-t border-line">
-            {PROFESSIONAL_PLANS.map((plan) => (
+          <div className="grid gap-8 md:grid-cols-2">
+            {PRICING_CARDS.map((card) => (
               <div
-                key={plan.name}
-                className="grid gap-2 border-l-2 border-coral py-6 pl-6 md:grid-cols-[1fr_1fr_2fr] md:items-baseline md:gap-8"
+                key={card.heading}
+                className={`flex flex-col border ${card.accent} p-8 md:p-10`}
               >
-                <h3 className="text-xl">{plan.name}</h3>
-                <p className="text-lg text-ink">
-                  {plan.price}{" "}
-                  <span className="text-sm text-muted">{plan.unit}</span>
-                </p>
-                <p className="text-ink-soft">{plan.description}</p>
+                <h2 className="text-2xl md:text-3xl">{card.heading}</h2>
+                <p className="mt-3 text-ink-soft">{card.subheading}</p>
+
+                <div className="mt-8 flex items-baseline gap-2">
+                  <span className="text-4xl md:text-5xl text-ink">
+                    {card.price}
+                  </span>
+                  {card.priceUnit && (
+                    <span className="text-sm text-muted">
+                      {card.priceUnit}
+                    </span>
+                  )}
+                </div>
+
+                <a
+                  href={card.cta.href}
+                  target={card.cta.external ? "_blank" : undefined}
+                  rel={card.cta.external ? "noopener noreferrer" : undefined}
+                  className={`mt-6 inline-block rounded-md ${card.bg} px-6 py-3 text-center font-medium text-paper transition-opacity hover:opacity-90`}
+                >
+                  {card.cta.label}
+                </a>
+
+                <ul className="mt-8 space-y-3 border-t border-line pt-8">
+                  {card.features.map((feature) => (
+                    <li key={feature} className="flex gap-3 text-ink-soft">
+                      <CheckIcon className={card.text} />
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="mt-8 border-t border-line pt-6">
+                  <p className="text-sm text-muted">Who it&rsquo;s for:</p>
+                  <p className="mt-1 text-ink-soft">{card.whoFor}</p>
+                </div>
               </div>
             ))}
           </div>
-
-          <a
-            href={CALENDLY_PROFESSIONALS_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-8 inline-block border-b-2 border-coral pb-1 font-medium text-ink"
-          >
-            Book a session
-          </a>
-        </Container>
-      </section>
-
-      <section className="border-t border-line bg-paper-raised py-16">
-        <Container>
-          <p className="text-sm text-teal">For Corporate</p>
-          <h2 className="mt-3 text-2xl md:text-3xl">
-            Custom pricing — book a call
-          </h2>
-          <p className="mt-4 max-w-2xl text-ink-soft">
-            Cohort pricing for outsourcing and staffing firms, and team
-            training pricing for Western companies, depends on group size
-            and format. Book a call and we&rsquo;ll put together a quote.
-          </p>
-          <Link
-            href="/corporate"
-            className="mt-6 inline-block border-b-2 border-teal pb-1 font-medium text-ink"
-          >
-            Go to For Corporate
-          </Link>
         </Container>
       </section>
     </>

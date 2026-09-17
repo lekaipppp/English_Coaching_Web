@@ -13,7 +13,7 @@ const FEATURES = [
   {
     title: "1:1, not cohort-based",
     description:
-      "Sessions are built around your role, your accent, your meetings — not a generic curriculum shared with a group.",
+      "Sessions are built around your role, your industry, your meetings — not a generic curriculum shared with a group.",
     accent: "border-coral",
   },
   {
@@ -41,8 +41,8 @@ export default function ProfessionalsPage() {
               You know the answer. Say it like you do.
             </h1>
             <p className="mt-6 max-w-2xl text-lg text-ink-soft">
-              1:1 coaching for developers and IT professionals working in
-              Western companies. We work on speaking up in meetings, prepping
+              1:1 coaching for developers and IT professionals from East Asia
+              working in Western companies. We work on speaking up in meetings, prepping
               for interviews, and handling client calls — so the way you say
               something stops undercutting what you actually know.
             </p>
