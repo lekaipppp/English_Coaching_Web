@@ -9,7 +9,7 @@ export const SITE_DESCRIPTION =
   "Crosswire helps international tech professionals speak up, push back on deadlines, and handle client calls with confidence — plus cohort training for the firms and teams around them.";
 
 // Placeholder booking links — swap for real Calendly links before launch.
-export const CALENDLY_PROFESSIONALS_URL = "https://calendly.com/crosswire/professional-session";
+export const CALENDLY_PROFESSIONALS_URL = "https://calendly.com/lekaipan259/30min";
 export const CALENDLY_OUTSOURCING_URL = "https://calendly.com/crosswire/outsourcing-intro-call";
 export const CALENDLY_WESTERN_URL = "https://calendly.com/crosswire/corporate-intro-call";
 
