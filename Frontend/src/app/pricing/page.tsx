@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import Container from "@/components/Container";
-import { CALENDLY_PROFESSIONALS_URL, CONTACT_EMAIL } from "@/lib/constants";
+import {
+  CALENDLY_PROFESSIONALS_URL,
+  TEAM_TRAINING_CONTACT_MAILTO,
+} from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Pricing",
@@ -40,7 +43,7 @@ const PRICING_CARDS = [
     priceUnit: null,
     cta: {
       label: "Contact us",
-      href: `mailto:${CONTACT_EMAIL}`,
+      href: TEAM_TRAINING_CONTACT_MAILTO,
       external: false,
     },
     features: [

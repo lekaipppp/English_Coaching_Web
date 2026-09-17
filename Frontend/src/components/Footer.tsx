@@ -37,7 +37,6 @@ export default function Footer() {
             >
               {CONTACT_EMAIL}
             </a>
-            <p className="mt-1 text-paper/50">(placeholder contact)</p>
           </div>
         </div>
 
